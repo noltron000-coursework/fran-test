@@ -17,7 +17,6 @@ injectGlobal`
 
   a {
     color: ${theme.colors.link};
-    transition: color .5s;
     text-decoration: none;
   }
 

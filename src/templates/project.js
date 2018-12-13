@@ -3,7 +3,6 @@ import Helmet from 'react-helmet';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import Overdrive from 'react-overdrive';
 import styled from 'react-emotion';
 
 import { Layout, ProjectHeader, ProjectPagination, SEO } from 'components';
@@ -11,12 +10,6 @@ import config from '../../config/site';
 
 const OuterWrapper = styled.div`
   padding: 0;
-`;
-
-const InnerWrapper = styled.div`
-  position: relative;
-  max-width: ${props => `${props.theme.maxWidths.project}px`};
-  margin: 0 auto;
 `;
 
 const Project = ({ pageContext: { slug, prev, next }, data: { project: postNode } }) => {
@@ -33,13 +26,9 @@ const Project = ({ pageContext: { slug, prev, next }, data: { project: postNode 
         title={project.title}
         areas={project.areas}
         text={postNode.html}
+        img={project.cover}
       />
       <OuterWrapper>
-        <InnerWrapper>
-          <Overdrive id={`${slug}-cover`}>
-            <Img fluid={project.cover.childImageSharp.fluid} />
-          </Overdrive>
-        </InnerWrapper>
         <ProjectPagination next={next} prev={prev} />
       </OuterWrapper>
     </Layout>
@@ -74,7 +63,7 @@ export const pageQuery = graphql`
       frontmatter {
         cover {
           childImageSharp {
-            fluid(maxWidth: 1600, quality: 90, traceSVG: { color: "#328bff" }) {
+            fluid(maxWidth: 1600, quality: 90) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
             resize(width: 800) {
@@ -82,7 +71,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        date(formatString: "DD.MM.YYYY")
+        date(formatString: "MMMM Do YYYY")
         title
         areas
       }

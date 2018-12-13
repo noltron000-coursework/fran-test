@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import Overdrive from 'react-overdrive';
+import Img from 'gatsby-image';
 
 import arrow from '../images/left-chevron.svg';
 
@@ -52,7 +52,7 @@ const Name = styled.h4`
 
 const Details = styled.div`
   width: 100%;
-  margin-top: 6rem;
+  margin-top: 2rem;
   text-align: center;
 
   h1 {
@@ -70,24 +70,30 @@ const Details = styled.div`
 `;
 
 const Text = styled.div`
-  max-width: 750px;
   margin: 4rem auto 2rem auto;
   color: ${props => props.theme.colors.color};
 `;
 
-const ProjectHeader = ({ avatar, name, title, date, areas, text }) => (
+const OuterWrapper = styled.div`
+  padding: 0;
+  margin-top: 4rem;
+`;
+
+const InnerWrapper = styled.div`
+  position: relative;
+  max-width: ${props => `${props.theme.maxWidths.project}px`};
+  margin: 0 auto;
+`;
+
+const ProjectHeader = ({ avatar, name, title, date, areas, text, img }) => (
   <Wrapper>
     <Content>
       <Back to="/">
         <img src={arrow} data-info="back" alt="test" />
-        <Overdrive id="avatar-to-back">
-          <Avatar>
-            <img src={avatar} alt={name} />
-          </Avatar>
-        </Overdrive>
-        <Overdrive id="name-to-back">
-          <Name>{name}</Name>
-        </Overdrive>
+        <Avatar>
+          <img src={avatar} alt={name} />
+        </Avatar>
+        <Name>{name}</Name>
       </Back>
       <Details>
         <h1>{title}</h1>
@@ -97,6 +103,11 @@ const ProjectHeader = ({ avatar, name, title, date, areas, text }) => (
             <span key={area}>{area}</span>
           ))}
         </div>
+        <OuterWrapper>
+          <InnerWrapper>
+            <Img fluid={img.childImageSharp.fluid} />
+          </InnerWrapper>
+        </OuterWrapper>
         {text && <Text dangerouslySetInnerHTML={{ __html: text }} />}
       </Details>
     </Content>
@@ -112,4 +123,5 @@ ProjectHeader.propTypes = {
   date: PropTypes.string.isRequired,
   areas: PropTypes.array.isRequired,
   text: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
 };

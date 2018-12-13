@@ -3,7 +3,6 @@ import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
-import Overdrive from 'react-overdrive';
 
 const CardItem = styled(Link)`
   min-height: 500px;
@@ -14,7 +13,6 @@ const CardItem = styled(Link)`
   flex-direction: column;
   justify-content: space-between;
   color: ${props => props.theme.colors.color};
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   &:after {
     content: '';
@@ -32,7 +30,6 @@ const CardItem = styled(Link)`
       rgba(0, 0, 0, 0) 80%,
       rgba(0, 0, 0, 0.75) 100%
     );
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     opacity: 0;
   }
 
@@ -62,7 +59,6 @@ const Header = styled.div`
   justify-content: space-between;
   padding: 1rem;
   z-index: 10;
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   opacity: 0;
   color: ${props => props.theme.colors.bg};
 
@@ -84,7 +80,6 @@ const Data = styled.div`
 const Content = styled.div`
   padding: 1rem;
   position: relative;
-  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   opacity: 0;
   color: ${props => props.theme.colors.bg};
 
@@ -112,26 +107,24 @@ const Name = styled.h2`
 `;
 
 const Card = ({ path, cover, date, areas, title, slug }) => (
-  <Overdrive id={`${slug}-cover`}>
-    <CardItem to={path}>
-      <Cover>
-        <Img sizes={cover} />
-      </Cover>
-      <Header>
-        <DateWrapper>{date}</DateWrapper>
-        <Areas>
-          {areas.map(area => (
-            <AreaItem key={area}>{area}</AreaItem>
-          ))}
-        </Areas>
-      </Header>
-      <Data>
-        <Content>
-          <Name>{title}</Name>
-        </Content>
-      </Data>
-    </CardItem>
-  </Overdrive>
+  <CardItem to={path}>
+    <Cover>
+      <Img sizes={cover} />
+    </Cover>
+    <Header>
+      <DateWrapper>{date}</DateWrapper>
+      <Areas>
+        {areas.map(area => (
+          <AreaItem key={area}>{area}</AreaItem>
+        ))}
+      </Areas>
+    </Header>
+    <Data>
+      <Content>
+        <Name>{title}</Name>
+      </Content>
+    </Data>
+  </CardItem>
 );
 
 export default Card;

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
 import PropTypes from 'prop-types';
-import Overdrive from 'react-overdrive';
 
 const Wrapper = styled.div`
   display: flex;
@@ -53,14 +52,10 @@ const SocialMedia = styled.div`
 const Header = ({ avatar, name, status, socialMedia }) => (
   <Wrapper>
     <Content>
-      <Overdrive id="avatar-to-back">
-        <Avatar>
-          <img src={avatar} alt={name} />
-        </Avatar>
-      </Overdrive>
-      <Overdrive id="name-to-back">
-        <Name>{name}</Name>
-      </Overdrive>
+      <Avatar>
+        <img src={avatar} alt={name} />
+      </Avatar>
+      <Name>{name}</Name>
       <Status>{status}</Status>
       <SocialMedia>
         {socialMedia.map(social => (

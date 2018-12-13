@@ -31,7 +31,7 @@ const SEO = props => {
       '@id': blogURL,
       url: blogURL,
       name: title,
-      alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
+      alternateName: config.siteTitleAlt ? config.siteTitleAlt : ''
     },
   ];
   if (postSEO) {
@@ -66,7 +66,7 @@ const SEO = props => {
         isPartOf: blogURL,
         mainEntityOfPage: {
           '@type': 'WebSite',
-          '@id': blogURL,
+          '@id': blogURL
         },
       },
     ];
