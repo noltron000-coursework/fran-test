@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+sitemap: https://noltron000.netlify.com/sitemap.xml
