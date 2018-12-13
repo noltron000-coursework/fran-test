@@ -22,10 +22,10 @@ const Grid = styled.div`
 `;
 
 const Content = styled.div`
-  margin: -6rem auto 6rem auto;
   max-width: ${props => props.theme.maxWidths.general};
-  padding: 0 ${props => props.theme.contentPadding} 1.45rem;
+  padding: 0;
   position: relative;
+  margin: 2rem auto;
 `;
 
 const Index = ({

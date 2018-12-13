@@ -9,9 +9,9 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  margin: 0 auto;
+  margin: 2rem auto;
   max-width: ${props => props.theme.maxWidths.general};
-  padding: 3rem 1.0875rem 10rem 1.0875rem;
+  padding: 0;
   color: ${props => props.theme.colors.secondary};
   text-align: center;
 `;

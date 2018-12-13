@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 
 const Content = styled.p`
   color: ${props => props.theme.colors.secondary};
-  padding: 0 ${props => props.theme.contentPadding};
+  padding: 2rem;
   text-align: center;
 `;
 

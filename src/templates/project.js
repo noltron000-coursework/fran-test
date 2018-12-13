@@ -10,7 +10,7 @@ import { Layout, ProjectHeader, ProjectPagination, SEO } from 'components';
 import config from '../../config/site';
 
 const OuterWrapper = styled.div`
-  padding: 0 ${props => props.theme.contentPadding};
+  padding: 0;
 `;
 
 const InnerWrapper = styled.div`
@@ -37,7 +37,7 @@ const Project = ({ pageContext: { slug, prev, next }, data: { project: postNode 
       <OuterWrapper>
         <InnerWrapper>
           <Overdrive id={`${slug}-cover`}>
-            <Img fluid={project.cover} />
+            <Img fluid={project.cover.childImageSharp.fluid} />
           </Overdrive>
         </InnerWrapper>
         <ProjectPagination next={next} prev={prev} />
@@ -67,7 +67,7 @@ Project.defaultProps = {
 };
 
 export const pageQuery = graphql`
-  query ProjectPostBySlug($slug: String!, $absolutePathRegex: String!, $absolutePathCover: String!) {
+  query ProjectPostBySlug($slug: String!) {
     project: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       excerpt
