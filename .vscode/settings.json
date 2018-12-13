@@ -1,0 +1,6 @@
+{
+    "workbench.settings.editor": "json",
+    "files.associations": {
+        "*.js": "javascriptreact"
+    }
+}
